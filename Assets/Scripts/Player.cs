@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
 {
     Rigidbody2D playerRig;
     SpriteRenderer playerRender;
+    Animator playerAnime;
     Vector2 movement;
     float moveSpeed;
     public DirectionX xDir;
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
     {
         playerRig = GetComponent<Rigidbody2D>();
         playerRender = GetComponent<SpriteRenderer>();
+        playerAnime = GetComponent<Animator>();
         moveSpeed = 5.0f;
     }
 
@@ -45,10 +47,12 @@ public class Player : MonoBehaviour
     float v => Input.GetAxis("Vertical");
     void Move()
     {
-        movement = new Vector2(h, v);
+        if (h != 0)
+            playerRender.flipX = h < 0;
+        movement = new Vector2(h, v).normalized;
         playerRig.MovePosition(playerRig.position + (movement * moveSpeed * Time.fixedDeltaTime));
-        playerRender.flipX = h < 0;
         xDir = (DirectionX)h;
         yDir = (DirectionY)v;
+        playerAnime.SetFloat("Speed", movement.magnitude);
     }
 }
