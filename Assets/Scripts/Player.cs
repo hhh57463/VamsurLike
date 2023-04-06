@@ -17,13 +17,22 @@ public enum DirectionY
 
 public class Player : MonoBehaviour
 {
+
     Rigidbody2D playerRig;
     SpriteRenderer playerRender;
     Animator playerAnime;
-    Vector2 movement;
-    float moveSpeed;
+
+    [Header("Player Direction")]
+    public Vector2 movement;
     public DirectionX xDir;
     public DirectionY yDir;
+
+    [Header("Player Stat")]
+    public float moveSpeed;
+    public float hp;
+    public float maxHP;
+    public float exp;
+    public float maxExp;
 
     void Start()
     {
@@ -31,6 +40,9 @@ public class Player : MonoBehaviour
         playerRender = GetComponent<SpriteRenderer>();
         playerAnime = GetComponent<Animator>();
         moveSpeed = 5.0f;
+        hp = maxHP = 100.0f;
+        maxExp = 100.0f;
+        exp = 0.0f;
     }
 
     void Update()

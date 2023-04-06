@@ -9,7 +9,14 @@ public class Monster : MonoBehaviour
     Animator monsterAnime;
     CapsuleCollider2D monsterCol;
     Vector2 movement;
-    float moveSpeed;
+    public Transform target;           // 나중에 뭐 도발? 시스템 만들때를 대비해서
+
+    [Header("Monster Info")]
+    public MonsterData monsterData;
+    public MonsterType type;
+    public float hp;
+    public float moveSpeed;
+    public int dropExp;
 
     void Start()
     {
@@ -17,7 +24,8 @@ public class Monster : MonoBehaviour
         monsterRig = GetComponent<Rigidbody2D>();
         monsterAnime = GetComponent<Animator>();
         monsterCol = GetComponent<CapsuleCollider2D>();
-        moveSpeed = 4.5f;
+
+        InitMonster();
     }
 
     void Update()
@@ -30,10 +38,19 @@ public class Monster : MonoBehaviour
         Move();
     }
 
+    void InitMonster()
+    {
+        type = monsterData.type;
+        hp = monsterData.hp;
+        moveSpeed = monsterData.speed;
+        dropExp = monsterData.exp;
+        target = GameManager.I.playerSc.transform;
+    }
+
     void Move()
     {
-        monsterRenderer.flipX = GameManager.I.playerSc.transform.position.x < transform.position.x ? true : false;
-        movement = (GameManager.I.playerSc.transform.position - transform.position).normalized;
+        monsterRenderer.flipX = target.position.x < transform.position.x ? true : false;
+        movement = (target.position - transform.position).normalized;
         monsterRig.MovePosition(monsterRig.position + (movement * moveSpeed * Time.fixedDeltaTime));
     }
 }
