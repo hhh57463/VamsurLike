@@ -6,7 +6,7 @@ using UnityEngine;
 public class MonsterData : ScriptableObject
 {
     public MonsterType type;
-    public float hp;
+    public int hp;
     public float speed;
     public float range;
     public bool attackType;

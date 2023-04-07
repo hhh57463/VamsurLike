@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-
+        
     }
 
     void Update()
@@ -29,12 +29,12 @@ public class UIManager : MonoBehaviour
 
     void Exp()
     {
-        expImg.fillAmount = GameManager.I.playerSc.exp / GameManager.I.playerSc.maxExp;
+        expImg.fillAmount = (float)GameManager.I.playerSc.exp / (float)GameManager.I.playerSc.maxExp;
     }
 
     void HP()
     {
         hpRect.position = Camera.main.WorldToScreenPoint(GameManager.I.playerSc.transform.position);
-        hpImg.fillAmount = GameManager.I.playerSc.hp / GameManager.I.playerSc.maxHP;
+        hpImg.fillAmount = (float)GameManager.I.playerSc.hp / (float)GameManager.I.playerSc.maxHP;
     }
 }

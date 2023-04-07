@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum DirectionX
@@ -17,7 +15,6 @@ public enum DirectionY
 
 public class Player : MonoBehaviour
 {
-
     Rigidbody2D playerRig;
     SpriteRenderer playerRender;
     Animator playerAnime;
@@ -29,20 +26,20 @@ public class Player : MonoBehaviour
 
     [Header("Player Stat")]
     public float moveSpeed;
-    public float hp;
-    public float maxHP;
-    public float exp;
-    public float maxExp;
+    public int hp;
+    public int maxHP;
+    public int exp;
+    public int maxExp;
 
     void Start()
     {
         playerRig = GetComponent<Rigidbody2D>();
         playerRender = GetComponent<SpriteRenderer>();
         playerAnime = GetComponent<Animator>();
-        moveSpeed = 5.0f;
-        hp = maxHP = 100.0f;
-        maxExp = 100.0f;
-        exp = 0.0f;
+        moveSpeed = 5;
+        hp = maxHP = 100;
+        maxExp = 100;
+        exp = 0;
     }
 
     void Update()
