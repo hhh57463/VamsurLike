@@ -7,14 +7,14 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] Transform monsterParent;
     [SerializeField] GameObject[] MonsterPrefab = new GameObject[5];
     public List<List<Monster>> monsterManager = new List<List<Monster>>();
-    int[] monsterIdx = new int[5] { 0, 0, 0, 0, 0 };
-
+    public int[] monsterIdx = new int[5] { 0, 0, 0, 0, 0 };
+    [SerializeField] int cnt;
     void Start()
     {
         for (int i = 0; i < 5; i++)
         {
             monsterManager.Add(new List<Monster>());
-            for (int j = 0; j < 100; j++)
+            for (int j = 0; j < 5; j++)
             {
                 monsterManager[i].Add(Instantiate(MonsterPrefab[i], new Vector3(1000.0f, 1000.0f, 0.0f), Quaternion.identity, monsterParent).GetComponent<Monster>());
                 monsterManager[i][j].gameObject.SetActive(false);
@@ -24,16 +24,41 @@ public class SpawnManager : MonoBehaviour
 
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            MonsterSpawn(MonsterType.Monster0, cnt);
+        }
     }
 
-    void MonsterSpawn(MonsterType type, int cnt)
+    public void MonsterSpawn(MonsterType type, int cnt)
+    {
+        int spawnCnt = 0;
+        for (int i = 0; i < monsterManager[(int)type].Count; i++)
+        {
+            if (spawnCnt.Equals(cnt))
+                return;
+            if (CheckMonState(type, i))
+            {
+                monsterManager[(int)type][i].gameObject.SetActive(true);
+                spawnCnt++;
+            }
+        }
+        AddMonster(type, cnt - spawnCnt);
+    }
+
+    bool CheckMonState(MonsterType type, int idx)
+    {
+        if (monsterManager[(int)type][idx].gameObject.activeSelf)
+            return false;
+        else
+            return true;
+    }
+
+    void AddMonster(MonsterType type, int cnt)
     {
         for (int i = 0; i < cnt; i++)
         {
-            monsterManager[(int)type][monsterIdx[(int)type]++].gameObject.SetActive(true);
-            if (monsterIdx[(int)type] >= 100)
-                monsterIdx[(int)type] = 0;
+            monsterManager[(int)type].Add(Instantiate(MonsterPrefab[(int)type], new Vector3(1000.0f, 1000.0f, 0.0f), Quaternion.identity, monsterParent).GetComponent<Monster>());
         }
     }
 }
