@@ -3,30 +3,21 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-
     [SerializeField] Transform monsterParent;
     [SerializeField] GameObject[] MonsterPrefab = new GameObject[5];
     public List<List<Monster>> monsterManager = new List<List<Monster>>();
-    public int[] monsterIdx = new int[5] { 0, 0, 0, 0, 0 };
-    [SerializeField] int cnt;
+    const int spawnCnt = 100;
+
     void Start()
     {
         for (int i = 0; i < 5; i++)
         {
             monsterManager.Add(new List<Monster>());
-            for (int j = 0; j < 5; j++)
+            for (int j = 0; j < spawnCnt; j++)
             {
                 monsterManager[i].Add(Instantiate(MonsterPrefab[i], new Vector3(1000.0f, 1000.0f, 0.0f), Quaternion.identity, monsterParent).GetComponent<Monster>());
                 monsterManager[i][j].gameObject.SetActive(false);
             }
-        }
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            MonsterSpawn(MonsterType.Monster0, cnt);
         }
     }
 
