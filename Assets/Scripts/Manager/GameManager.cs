@@ -4,9 +4,9 @@ using UnityEngine;
 
 internal static class YieldInstructionCache
 {
-    public static readonly WaitForEndOfFrame WaitForEndOfFrame = new();
-    public static readonly WaitForFixedUpdate WaitForFixedUpdate = new();
-    private static readonly Dictionary<float, WaitForSeconds> waitForSeconds = new();
+    public static readonly WaitForEndOfFrame WaitForEndOfFrame = new WaitForEndOfFrame();
+    public static readonly WaitForFixedUpdate WaitForFixedUpdate = new WaitForFixedUpdate();
+    private static readonly Dictionary<float, WaitForSeconds> waitForSeconds = new Dictionary<float, WaitForSeconds>();
 
     public static WaitForSeconds WaitForSeconds(float seconds)
     {
@@ -53,19 +53,18 @@ public class GameManager : MonoBehaviour
         switch (time)
         {
             case int t when t <= 300:
-                spawnManager.MonsterSpawn(MonsterType.Monster0, 3);
+                spawnManager.MonsterSpawn(MonsterType.Enemy1, 3);
                 break;
             case int t when t <= 600:
-                spawnManager.MonsterSpawn(MonsterType.Monster0, 5);
-                spawnManager.MonsterSpawn(MonsterType.Monster1, 5);
-                spawnManager.MonsterSpawn(MonsterType.Monster2, 5);
+                spawnManager.MonsterSpawn(MonsterType.Enemy1, 5);
+                spawnManager.MonsterSpawn(MonsterType.Enemy2, 5);
+                spawnManager.MonsterSpawn(MonsterType.Enemy3, 5);
                 break;
             case int t when t <= 900:
-                spawnManager.MonsterSpawn(MonsterType.Monster0, 10);
-                spawnManager.MonsterSpawn(MonsterType.Monster1, 10);
-                spawnManager.MonsterSpawn(MonsterType.Monster2, 10);
-                spawnManager.MonsterSpawn(MonsterType.Monster3, 10);
-                spawnManager.MonsterSpawn(MonsterType.Monster4, 10);
+                spawnManager.MonsterSpawn(MonsterType.Enemy1, 10);
+                spawnManager.MonsterSpawn(MonsterType.Enemy2, 10);
+                spawnManager.MonsterSpawn(MonsterType.Enemy3, 10);
+                spawnManager.MonsterSpawn(MonsterType.Enemy4, 10);
                 break;
         }
     }

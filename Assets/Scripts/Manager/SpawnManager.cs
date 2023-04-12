@@ -4,13 +4,13 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField] Transform monsterParent;
-    [SerializeField] GameObject[] MonsterPrefab = new GameObject[5];
+    [SerializeField] GameObject[] MonsterPrefab = new GameObject[4];
     public List<List<Monster>> monsterManager = new List<List<Monster>>();
     const int spawnCnt = 100;
 
     void Start()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 4; i++)
         {
             monsterManager.Add(new List<Monster>());
             for (int j = 0; j < spawnCnt; j++)

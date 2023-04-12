@@ -1,8 +1,7 @@
 public enum MonsterType
 {
-    Monster0,
-    Monster1,
-    Monster2,
-    Monster3,
-    Monster4    
+    Enemy1,
+    Enemy2,
+    Enemy3,
+    Enemy4    
 }
