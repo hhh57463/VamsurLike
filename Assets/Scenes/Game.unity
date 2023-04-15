@@ -248,6 +248,7 @@ GameObject:
   - component: {fileID: 194739317}
   - component: {fileID: 194739316}
   - component: {fileID: 194739318}
+  - component: {fileID: 194739319}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -269,6 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnManager: {fileID: 194739318}
   uiManager: {fileID: 1349503843}
+  skillManager: {fileID: 194739319}
   playerSc: {fileID: 430324724}
   playTime: 0
   killCount: 0
@@ -305,6 +307,19 @@ MonoBehaviour:
   - {fileID: 7237282853373046000, guid: 14129316be178604a88a2108bf533ccc, type: 3}
   - {fileID: 4667857449184130910, guid: bc4f69369bb6235479c6f02a689c10a6, type: 3}
   - {fileID: 8212359088333302607, guid: 444074854a3533f4c8b038d81f3cae2c, type: 3}
+--- !u!114 &194739319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194739315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abcb21df7918e78489ba081678bf1c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicWeaponLevel: 1
 --- !u!1 &295476847
 GameObject:
   m_ObjectHideFlags: 0
@@ -4863,6 +4878,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {x: 0, y: 0}
   xDir: 0
+  xDirBefore: 0
   yDir: 0
   moveSpeed: 0
   hp: 0

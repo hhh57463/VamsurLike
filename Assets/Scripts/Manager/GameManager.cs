@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     public SpawnManager spawnManager;
     public UIManager uiManager;
+    public SkillManager skillManager;
     public Player playerSc;
     public int playTime;
     public int killCount;

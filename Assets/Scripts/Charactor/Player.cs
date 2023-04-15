@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     [Header("Player Direction")]
     public Vector2 movement;
     public DirectionX xDir;
+    public DirectionX xDirBefore;
     public DirectionY yDir;
 
     [Header("Player Stat")]
@@ -67,6 +68,8 @@ public class Player : MonoBehaviour
         xDir = (DirectionX)h;
         yDir = (DirectionY)v;
         playerAnime.SetFloat("Speed", movement.magnitude);
+        if(!xDir.Equals(DirectionX.NONE))
+            xDirBefore = xDir;
     }
 
     public virtual void Init() { }
