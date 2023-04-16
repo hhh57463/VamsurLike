@@ -32,7 +32,9 @@ public class Player : MonoBehaviour
     public int maxHP;
     public int exp;
     public int maxExp;
+    public int damage;
     public float attackDelay;
+    public float attackDuration;
 
     public virtual void Start()
     {

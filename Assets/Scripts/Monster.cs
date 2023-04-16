@@ -30,7 +30,8 @@ public class Monster : MonoBehaviour
 
     void Update()
     {
-
+        if (hp <= 0)
+            Die();
     }
 
     void FixedUpdate()
@@ -62,5 +63,18 @@ public class Monster : MonoBehaviour
         monsterRenderer.flipX = target.position.x < transform.position.x;
         movement = (target.position - transform.position).normalized;
         monsterRig.MovePosition(monsterRig.position + (movement * moveSpeed * Time.fixedDeltaTime));
+    }
+
+    void Die()
+    {
+        // Object Pooling
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.transform.CompareTag("Weapon"))
+        {
+            hp -= GameManager.I.playerSc.damage;
+        }
     }
 }
