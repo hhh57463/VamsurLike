@@ -51,7 +51,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        Attack();
+        if(exp >= maxExp)
+            LevelUp();
     }
 
     void FixedUpdate()
@@ -61,7 +62,7 @@ public class Player : MonoBehaviour
 
     float h => Input.GetAxis("Horizontal");
     float v => Input.GetAxis("Vertical");
-    public void Move()
+    void Move()
     {
         if (h != 0)
             playerRender.flipX = h < 0;
@@ -72,6 +73,12 @@ public class Player : MonoBehaviour
         playerAnime.SetFloat("Speed", movement.magnitude);
         if(!xDir.Equals(DirectionX.NONE))
             xDirBefore = xDir;
+    }
+
+    void LevelUp()
+    {
+        exp = exp - maxExp;
+        Debug.Log("레벨업 이벤트");
     }
 
     public virtual void Init() { }

@@ -24,7 +24,6 @@ public class Monster : MonoBehaviour
         monsterRig = GetComponent<Rigidbody2D>();
         monsterAnime = GetComponent<Animator>();
         monsterCol = GetComponent<CapsuleCollider2D>();
-
         InitMonster();
     }
 
@@ -37,6 +36,11 @@ public class Monster : MonoBehaviour
     void FixedUpdate()
     {
         Move();
+    }
+
+    void OnEnable()
+    {
+        InitMonster();
     }
 
     void InitMonster()
@@ -67,12 +71,13 @@ public class Monster : MonoBehaviour
 
     void Die()
     {
-        // Object Pooling
+        GameManager.I.spawnManager.ExpSpawn(transform.position, dropExp);
+        gameObject.SetActive(false);
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.transform.CompareTag("Weapon"))
+        if (col.CompareTag("Weapon"))
         {
             hp -= GameManager.I.playerSc.damage;
         }

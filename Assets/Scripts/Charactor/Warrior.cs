@@ -13,7 +13,6 @@ public class Warrior : Player
     public override IEnumerator Attack()
     {
         yield return YieldInstructionCache.WaitForSeconds(attackDelay);
-        Debug.Log("Attack");
         StartCoroutine("Slash");
         StartCoroutine("Attack");
     }
