@@ -29,13 +29,13 @@ public class SpawnManager : MonoBehaviour
     public void MonsterSpawn(MonsterType type, int cnt)
     {
         int spawnCnt = 0;
-        foreach (var monster in monsterManager[(int)type])
+        for (int i = 0; i < monsterManager[(int)type].Count; i++)
         {
             if (spawnCnt.Equals(cnt))
                 return;
-            if (CheckMonState(type, monsterManager[(int)type].IndexOf(monster)))
+            if (CheckMonState(type, i))
             {
-                monster.gameObject.SetActive(true);
+                monsterManager[(int)type][i].gameObject.SetActive(true);
                 spawnCnt++;
             }
         }
