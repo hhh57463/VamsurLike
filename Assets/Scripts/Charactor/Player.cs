@@ -1,19 +1,6 @@
 using System.Collections;
 using UnityEngine;
 
-public enum DirectionX
-{
-    LEFT = -1,
-    NONE,
-    RIGHT
-}
-public enum DirectionY
-{
-    DOWN = -1,
-    NONE,
-    UP,
-}
-
 public class Player : MonoBehaviour
 {
     Rigidbody2D playerRig;
@@ -43,8 +30,8 @@ public class Player : MonoBehaviour
         playerAnime = GetComponent<Animator>();
         moveSpeed = 5;
         hp = maxHP = 100;
-        maxExp = 100;
         exp = 0;
+        maxExp = 100;
         Init();
         StartCoroutine("Attack");
     }

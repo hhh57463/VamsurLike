@@ -19,7 +19,7 @@ public class Warrior : Player
 
     IEnumerator Slash()
     {
-        switch (GameManager.I.skillManager.basicWeaponLevel)
+        switch (GameManager.I.skillManager.skillLevels[0])
         {
             case 1:
                 CheckSlashDir(0, 1);

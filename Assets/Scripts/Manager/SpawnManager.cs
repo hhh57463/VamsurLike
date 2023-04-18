@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    [SerializeField] Sprite[] expSprite = new Sprite[2];
     [SerializeField] Transform monsterParent;
     [SerializeField] Transform expParent;
     [SerializeField] GameObject[] MonsterPrefab = new GameObject[4];
