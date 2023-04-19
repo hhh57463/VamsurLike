@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
     void LevelUp()
     {
         exp = exp - maxExp;
-        Debug.Log("레벨업 이벤트");
+        GameManager.I.uiManager.LevelUp();
     }
 
     public virtual void Init() { }
