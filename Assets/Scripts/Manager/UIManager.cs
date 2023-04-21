@@ -110,7 +110,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("체력 회복");
+            GameManager.I.skillManager.SkillLevelUp((int)Skills.Pill);
         }
         levelupPopup.SetActive(false);
         Time.timeScale = 1;
