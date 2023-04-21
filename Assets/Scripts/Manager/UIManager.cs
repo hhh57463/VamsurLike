@@ -73,31 +73,45 @@ public class UIManager : MonoBehaviour
         levelupPopup.SetActive(true);
         exception.Clear();
         int itemAmount = fewSkill < 3 ? fewSkill : 3;
-        for (int i = 0; i < itemAmount; i++)
+        if (!itemAmount.Equals(0))
         {
-            int skill;
-            do
+            for (int i = 0; i < itemAmount; i++)
             {
-                skill = Random.Range(0, (int)(Skills.SkillLastIndex));
-            } while (exception.Contains(skill) || GameManager.I.skillManager.skillLevels[skill] >= 4);
-            skillBtn[i].skillImg.sprite = GameManager.I.skillManager.skillDatas[skill].skillSprite;
-            skillBtn[i].skillNameText.text = GameManager.I.skillManager.skillDatas[skill].skillName;
-            skillBtn[i].skillInfoText.text = GameManager.I.skillManager.skillLevels[skill] < 3 ? GameManager.I.skillManager.skillDatas[skill].skillInfo[0] : GameManager.I.skillManager.skillDatas[skill].skillInfo[1];
-            exception.Add(skill);
-            if (i < 3 - fewSkill)
-            {
-                // 나중에 해당 버튼 오브젝트를 비활성화 시키던지 버튼의 기능을 끄든지(interactable) 설정하기
-                // 만약 버튼 하나만 남았을때 (전부 각성 시켰으면) 하나의 버튼은 남겨놓고 체력회복 시키는 버튼으로 추가하기
-                skillBtn[i + fewSkill].skillBtn.interactable = false;
+                int skill;
+                do
+                {
+                    skill = Random.Range(0, (int)(Skills.SkillLastIndex));
+                } while (exception.Contains(skill) || GameManager.I.skillManager.skillLevels[skill] >= 4);
+                skillBtn[i].skillImg.sprite = GameManager.I.skillManager.skillDatas[skill].skillSprite;
+                skillBtn[i].skillNameText.text = GameManager.I.skillManager.skillDatas[skill].skillName;
+                skillBtn[i].skillInfoText.text = GameManager.I.skillManager.skillLevels[skill] < 3 ? GameManager.I.skillManager.skillDatas[skill].skillInfo[0] : GameManager.I.skillManager.skillDatas[skill].skillInfo[1];
+                exception.Add(skill);
+                if (i < 3 - fewSkill)
+                {
+                    skillBtn[i + fewSkill].skillBtn.gameObject.SetActive(false);
+                }
             }
+        }
+        else
+        {
+            skillBtn[0].skillImg.sprite = GameManager.I.skillManager.pillData.skillSprite;
+            skillBtn[0].skillNameText.text = GameManager.I.skillManager.pillData.skillName;
+            skillBtn[0].skillInfoText.text = GameManager.I.skillManager.pillData.skillInfo[0];
         }
         Time.timeScale = 0;
     }
 
     public void SkillUpBtn1()
     {
-        GameManager.I.skillManager.skillLevels[exception[0]]++;
-        CheckSkillAwaken(GameManager.I.skillManager.skillLevels[exception[0]]);
+        if (!fewSkill.Equals(0))
+        {
+            GameManager.I.skillManager.skillLevels[exception[0]]++;
+            CheckSkillAwaken(GameManager.I.skillManager.skillLevels[exception[0]]);
+        }
+        else
+        {
+            Debug.Log("체력 회복");
+        }
         levelupPopup.SetActive(false);
         Time.timeScale = 1;
     }

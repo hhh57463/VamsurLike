@@ -604,6 +604,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ae5c8618980f08c4593e1e4174af5edf, type: 2}
   - {fileID: 11400000, guid: 2a7b7675488f6854794147f149971e8a, type: 2}
   - {fileID: 11400000, guid: b27dc8b9df6d4f94693e8419069601ef, type: 2}
+  pillData: {fileID: 11400000, guid: d8c36184f0b03334b94fb01036a9d817, type: 2}
   skillLevels: 010000000000
 --- !u!1 &249797698
 GameObject:

@@ -28,6 +28,7 @@ public enum Skills
     Ring,
     Clover,
     Drink,
-    
+
     SkillLastIndex,
+    Pill,
 }

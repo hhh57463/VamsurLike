@@ -6,5 +6,6 @@ public class SkillManager : MonoBehaviour
     [Space(10)]
 
     public SkillData[] skillDatas;
+    public SkillData pillData;
     public byte[] skillLevels;                   // enum의 Skills로 인덱스 가져오기
 }
