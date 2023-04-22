@@ -49,7 +49,7 @@ public class Monster : MonoBehaviour
         hp = monsterData.hp;
         moveSpeed = monsterData.speed;
         dropExp = monsterData.exp;
-        target = GameManager.I.playerSc.transform;
+        target = GameManager.I.playerSc.playerTransform;
         if (GameManager.I.playerSc.xDir.Equals(DirectionX.NONE) && GameManager.I.playerSc.yDir.Equals(DirectionY.NONE))
         {
             int x = Random.Range(1, 3);
@@ -77,7 +77,7 @@ public class Monster : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Weapon"))
+        if (col.CompareTag("Weapon") || col.CompareTag("Skill"))
         {
             hp -= GameManager.I.playerSc.damage;
             GameManager.I.killCount++;

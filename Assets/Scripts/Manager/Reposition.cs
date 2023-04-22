@@ -8,8 +8,8 @@ public class Reposition : MonoBehaviour
         if (!col.CompareTag("Area"))
             return;
 
-        float dirX = GameManager.I.playerSc.transform.position.x - transform.position.x;
-        float dirY = GameManager.I.playerSc.transform.position.y - transform.position.y;
+        float dirX = GameManager.I.playerSc.playerTransform.position.x - transform.position.x;
+        float dirY = GameManager.I.playerSc.playerTransform.position.y - transform.position.y;
 
         float distanceX = Mathf.Abs(dirX);
         float distanceY = Mathf.Abs(dirY);

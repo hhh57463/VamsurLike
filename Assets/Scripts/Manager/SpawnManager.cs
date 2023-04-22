@@ -61,13 +61,13 @@ public class SpawnManager : MonoBehaviour
 
     public void ExpSpawn(Vector3 pos, int amount)
     {
-        foreach (var exp in expManager)
+        for(int i = 0 ; i < expManager.Count; i++)
         {
-            if (exp.gameObject.activeSelf)
+            if(expManager[i].gameObject.activeSelf)
                 continue;
-            exp.gameObject.SetActive(true);
-            exp.exp = amount;
-            exp.transform.position = pos;
+            expManager[i].gameObject.SetActive(true);
+            expManager[i].exp = amount;
+            expManager[i].transform.position = pos;
             return;
         }
         expManager.Add(Instantiate(ExpPrefab, pos, Quaternion.identity, expParent).GetComponent<Exp>());

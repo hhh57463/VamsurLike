@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     SpriteRenderer playerRender;
     Animator playerAnime;
 
+    public Transform playerTransform;
+
     [Header("Player Direction")]
     public Vector2 movement;
     public DirectionX xDir;
@@ -25,6 +27,7 @@ public class Player : MonoBehaviour
 
     public virtual void Start()
     {
+        playerTransform = transform;
         playerRig = GetComponent<Rigidbody2D>();
         playerRender = GetComponent<SpriteRenderer>();
         playerAnime = GetComponent<Animator>();

@@ -54,7 +54,7 @@ public class UIManager : MonoBehaviour
 
     void HP()
     {
-        hpRect.position = Camera.main.WorldToScreenPoint(GameManager.I.playerSc.transform.position);
+        hpRect.position = Camera.main.WorldToScreenPoint(GameManager.I.playerSc.playerTransform.position);
         hpImg.fillAmount = (float)GameManager.I.playerSc.hp / (float)GameManager.I.playerSc.maxHP;
     }
 
@@ -106,6 +106,7 @@ public class UIManager : MonoBehaviour
         if (!fewSkill.Equals(0))
         {
             GameManager.I.skillManager.skillLevels[exception[0]]++;
+            GameManager.I.skillManager.SkillLevelUp(exception[0]);
             CheckSkillAwaken(GameManager.I.skillManager.skillLevels[exception[0]]);
         }
         else
@@ -119,6 +120,7 @@ public class UIManager : MonoBehaviour
     public void SkillUpBtn2()
     {
         GameManager.I.skillManager.skillLevels[exception[1]]++;
+        GameManager.I.skillManager.SkillLevelUp(exception[1]);
         CheckSkillAwaken(GameManager.I.skillManager.skillLevels[exception[1]]);
         levelupPopup.SetActive(false);
         Time.timeScale = 1;
@@ -127,6 +129,7 @@ public class UIManager : MonoBehaviour
     public void SkillUpBtn3()
     {
         GameManager.I.skillManager.skillLevels[exception[2]]++;
+        GameManager.I.skillManager.SkillLevelUp(exception[2]);
         CheckSkillAwaken(GameManager.I.skillManager.skillLevels[exception[2]]);
         levelupPopup.SetActive(false);
         Time.timeScale = 1;
