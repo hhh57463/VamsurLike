@@ -9,7 +9,7 @@ public class Exp : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
-            GameManager.I.playerSc.exp += exp;
+            GameManager.I.playerSc.exp += exp + GameManager.I.playerSc.figureExp;
             gameObject.SetActive(false);
         }
     }

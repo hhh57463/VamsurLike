@@ -18,18 +18,25 @@ public class SkillManager : MonoBehaviour
             case (int)Skills.BasicSkill_Acher:
                 break;
             case (int)Skills.Brick:
-                if(GameManager.I.skillManager.skillLevels[(int)Skills.Brick].Equals(1))
+                if (GameManager.I.skillManager.skillLevels[(int)Skills.Brick].Equals(1))
                     Instantiate(brickPrefab, GameManager.I.playerSc.playerTransform);
                 break;
             case (int)Skills.Ring:
-                Debug.Log("반지 레벨 체크");
+                GameManager.I.playerSc.figureExp += 1;
                 break;
             case (int)Skills.Clover:
-                Debug.Log("클로버 레벨 체크");
+                Debug.Log("클로버는 피격 제작 후 만들 것");
                 break;
             case (int)Skills.Drink:
-                Debug.Log("음료수 레벨 체크");
+                GameManager.I.playerSc.figureSpeed += 0.25f;
                 break;
+            case (int)Skills.Adrenaline:
+
+            break;
+            case (int)Skills.Belt:
+
+            break;
+
             case (int)Skills.Pill:
                 GameManager.I.playerSc.hp = Mathf.Min(GameManager.I.playerSc.hp + 10, GameManager.I.playerSc.maxHP);
                 break;

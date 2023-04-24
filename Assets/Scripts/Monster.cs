@@ -79,7 +79,7 @@ public class Monster : MonoBehaviour
     {
         if (col.CompareTag("Weapon") || col.CompareTag("Skill"))
         {
-            hp -= GameManager.I.playerSc.damage;
+            hp -= GameManager.I.playerSc.damage + GameManager.I.playerSc.figureDmg;
             GameManager.I.killCount++;
         }
     }

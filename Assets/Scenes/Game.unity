@@ -605,8 +605,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ae5c8618980f08c4593e1e4174af5edf, type: 2}
   - {fileID: 11400000, guid: 2a7b7675488f6854794147f149971e8a, type: 2}
   - {fileID: 11400000, guid: b27dc8b9df6d4f94693e8419069601ef, type: 2}
+  - {fileID: 11400000, guid: e1588e073bb9a104386f7726b15f5ab1, type: 2}
+  - {fileID: 11400000, guid: 983d1269fd2da53449e8ad3b7f3c7617, type: 2}
   pillData: {fileID: 11400000, guid: d8c36184f0b03334b94fb01036a9d817, type: 2}
-  skillLevels: 010000000000
+  skillLevels: 0100000000000000
 --- !u!1 &249797698
 GameObject:
   m_ObjectHideFlags: 0
@@ -5328,6 +5330,10 @@ MonoBehaviour:
   damage: 0
   attackDelay: 0
   attackDuration: 0
+  figureDmg: 0
+  figureExp: 0
+  dmgDecrease: 0
+  figureSpeed: 0
   slashObj:
   - {fileID: 810414914}
   - {fileID: 1550141065}
