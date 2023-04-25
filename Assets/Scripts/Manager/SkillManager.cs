@@ -31,10 +31,10 @@ public class SkillManager : MonoBehaviour
                 GameManager.I.playerSc.figureSpeed += 0.25f;
                 break;
             case (int)Skills.Adrenaline:
-
+                GameManager.I.playerSc.attackDelay -= 0.3f;
             break;
             case (int)Skills.Belt:
-
+                GameManager.I.playerSc.maxHP += 10;
             break;
 
             case (int)Skills.Pill:

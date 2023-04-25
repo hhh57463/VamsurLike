@@ -55,7 +55,7 @@ public class UIManager : MonoBehaviour
     void HP()
     {
         hpRect.position = Camera.main.WorldToScreenPoint(GameManager.I.playerSc.playerTransform.position);
-        hpImg.fillAmount = (float)GameManager.I.playerSc.hp / (float)GameManager.I.playerSc.maxHP;
+        hpImg.fillAmount = GameManager.I.playerSc.hp / GameManager.I.playerSc.maxHP;
     }
 
     public void TimeSetting()
@@ -81,7 +81,7 @@ public class UIManager : MonoBehaviour
                 do
                 {
                     skill = Random.Range(0, (int)(Skills.SkillLastIndex));
-                } while (exception.Contains(skill) || GameManager.I.skillManager.skillLevels[skill] >= 4);
+                } while (exception.Contains(skill) || GameManager.I.skillManager.skillLevels[skill] >= 4);              // Contains 대체 구하기
                 skillBtn[i].skillImg.sprite = GameManager.I.skillManager.skillDatas[skill].skillSprite;
                 skillBtn[i].skillNameText.text = GameManager.I.skillManager.skillDatas[skill].skillName;
                 skillBtn[i].skillInfoText.text = GameManager.I.skillManager.skillLevels[skill] < 3 ? GameManager.I.skillManager.skillDatas[skill].skillInfo[0] : GameManager.I.skillManager.skillDatas[skill].skillInfo[1];

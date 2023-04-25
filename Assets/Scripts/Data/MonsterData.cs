@@ -10,5 +10,6 @@ public class MonsterData : ScriptableObject
     public float speed;
     public float range;
     public bool attackType;
+    public float dmg;
     public int exp;
 }

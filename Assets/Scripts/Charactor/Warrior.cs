@@ -7,14 +7,17 @@ public class Warrior : Player
     {
         damage = 10;
         attackDelay = 2.0f;
-        attackDuration = 0.3f;                      // 기본 공격 4레벨 되면 1.0으로 변경
+        attackDuration = 0.3f;
     }
 
     public override IEnumerator Attack()
     {
         yield return YieldInstructionCache.WaitForSeconds(attackDelay);
-        StartCoroutine("Slash");
-        StartCoroutine("Attack");
+        if (!isDie)
+        {
+            StartCoroutine("Slash");
+            StartCoroutine("Attack");
+        }
     }
 
     IEnumerator Slash()

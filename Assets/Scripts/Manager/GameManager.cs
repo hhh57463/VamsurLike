@@ -42,11 +42,14 @@ public class GameManager : MonoBehaviour
     IEnumerator TimeController()
     {
         yield return YieldInstructionCache.WaitForSeconds(1.0f);
-        playTime++;
-        uiManager.TimeSetting();
-        if ((playTime % 5).Equals(0))
-            SpawnTime(playTime);
-        StartCoroutine("TimeController");
+        if (!playerSc.isDie)
+        {
+            playTime++;
+            uiManager.TimeSetting();
+            if ((playTime % 5).Equals(0))
+                SpawnTime(playTime);
+            StartCoroutine("TimeController");
+        }
     }
 
     void SpawnTime(int time)

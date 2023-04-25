@@ -17,18 +17,19 @@ public class Player : MonoBehaviour
 
     [Header("Player Stat")]
     public float moveSpeed;
-    public int hp;
-    public int maxHP;
+    public float hp;
+    public float maxHP;
     public int exp;
     public int maxExp;
     public int damage;
     public float attackDelay;
     public float attackDuration;
+    public bool isDie;
 
     [Header("Player Figure")]
     public int figureDmg;
     public int figureExp;
-    public int dmgDecrease;
+    //public int dmgDecrease;
     public float figureSpeed;
 
     public virtual void Start()
@@ -38,26 +39,33 @@ public class Player : MonoBehaviour
         playerRender = GetComponent<SpriteRenderer>();
         playerAnime = GetComponent<Animator>();
         moveSpeed = 5.0f;
-        hp = maxHP = 100;
+        hp = maxHP = 100.0f;
         exp = 0;
         maxExp = 100;
         figureDmg = 0;
         figureExp = 0;
-        dmgDecrease = 0;
+        //dmgDecrease = 0;
         figureSpeed = 0.0f;
+        isDie = false;
         Init();
         StartCoroutine("Attack");
     }
 
     void Update()
     {
-        if(exp >= maxExp)
+        if (exp >= maxExp)
             LevelUp();
+        if (hp <= 0 && !isDie)
+        {
+            Die();
+            isDie = true;
+        }
     }
 
     void FixedUpdate()
     {
-        Move();
+        if (!isDie)
+            Move();
     }
 
     float h => Input.GetAxis("Horizontal");
@@ -71,13 +79,20 @@ public class Player : MonoBehaviour
         xDir = (DirectionX)h;
         yDir = (DirectionY)v;
         playerAnime.SetFloat("Speed", movement.magnitude);
-        if(!xDir.Equals(DirectionX.NONE))
+        if (!xDir.Equals(DirectionX.NONE))
             xDirBefore = xDir;
+    }
+
+    void Die()
+    {
+        playerAnime.SetTrigger("Die");
+        Debug.Log("플레이어 사망");
     }
 
     void LevelUp()
     {
         exp = exp - maxExp;
+        maxExp += 10;
         GameManager.I.uiManager.LevelUp();
     }
 

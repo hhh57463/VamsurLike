@@ -17,6 +17,7 @@ public class Monster : MonoBehaviour
     public int hp;
     public float moveSpeed;
     public int dropExp;
+    public float dmg;
 
     void Start()
     {
@@ -49,6 +50,7 @@ public class Monster : MonoBehaviour
         hp = monsterData.hp;
         moveSpeed = monsterData.speed;
         dropExp = monsterData.exp;
+        dmg = monsterData.dmg;
         target = GameManager.I.playerSc.playerTransform;
         if (GameManager.I.playerSc.xDir.Equals(DirectionX.NONE) && GameManager.I.playerSc.yDir.Equals(DirectionY.NONE))
         {
@@ -81,6 +83,17 @@ public class Monster : MonoBehaviour
         {
             hp -= GameManager.I.playerSc.damage + GameManager.I.playerSc.figureDmg;
             GameManager.I.killCount++;
+        }
+    }
+
+    void OnCollisionStay2D(Collision2D col)
+    {
+        if (col.transform.CompareTag("Player"))
+        {
+            if (!GameManager.I.playerSc.isDie)
+            {
+                GameManager.I.playerSc.hp -= dmg * Time.deltaTime;
+            }
         }
     }
 }
