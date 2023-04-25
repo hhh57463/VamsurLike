@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
         I = this;
     }
 
+    public Cinemachine.CinemachineVirtualCamera vCam;
     public SpawnManager spawnManager;
     public UIManager uiManager;
     public SkillManager skillManager;
