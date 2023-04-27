@@ -32,10 +32,13 @@ public class Player : MonoBehaviour
     //public int dmgDecrease;
     public float figureSpeed;
 
-    void Start()
+    void Awake()
     {
         GameManager.I.playerSc = this;
-        //playerTransform = transform;
+    }
+
+    void Start()
+    {
         GameManager.I.vCam.Follow = playerTransform;
         playerRig = GetComponent<Rigidbody2D>();
         playerRender = GetComponent<SpriteRenderer>();

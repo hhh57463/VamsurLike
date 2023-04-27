@@ -12,6 +12,7 @@ public class Monster : MonoBehaviour
     const float spawnRange = 20.0f;
 
     [Header("Monster Info")]
+    public Transform monsterTransfrom;
     public MonsterData monsterData;
     public MonsterType type;
     public int hp;
@@ -32,6 +33,7 @@ public class Monster : MonoBehaviour
     {
         if (hp <= 0)
             Die();
+        CheckDistance();
     }
 
     void FixedUpdate()
@@ -75,6 +77,15 @@ public class Monster : MonoBehaviour
     {
         GameManager.I.spawnManager.ExpSpawn(transform.position, dropExp);
         gameObject.SetActive(false);
+    }
+    
+    void CheckDistance()
+    {
+        float distance = Vector2.Distance(monsterTransfrom.position, GameManager.I.playerSc.playerTransform.position);
+        if(distance < GameManager.I.skillManager.nearMonDis)
+            GameManager.I.skillManager.nearMonster = this;
+        if(GameManager.I.skillManager.nearMonster == this)                          // 바꿀 방법 찾아보기
+            GameManager.I.skillManager.nearMonDis = distance;
     }
 
     void OnTriggerEnter2D(Collider2D col)

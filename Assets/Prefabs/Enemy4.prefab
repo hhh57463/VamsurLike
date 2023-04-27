@@ -159,8 +159,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  monsterTransfrom: {fileID: 8212359088333302603}
   monsterData: {fileID: 11400000, guid: 2371e7ad8a05e2d4991c2d7971cd18c4, type: 2}
   type: 3
   hp: 0
   moveSpeed: 0
   dropExp: 0
+  dmg: 0

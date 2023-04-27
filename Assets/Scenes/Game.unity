@@ -610,6 +610,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 983d1269fd2da53449e8ad3b7f3c7617, type: 2}
   pillData: {fileID: 11400000, guid: d8c36184f0b03334b94fb01036a9d817, type: 2}
   skillLevels: 0100000000000000
+  nearMonster: {fileID: 0}
+  nearMonDis: 10
 --- !u!1 &249797698
 GameObject:
   m_ObjectHideFlags: 0
@@ -5521,6 +5523,7 @@ MonoBehaviour:
   figureDmg: 0
   figureExp: 0
   figureSpeed: 0
+  arrowPrefab: {fileID: 5854967067318993928, guid: d92384c3ea2b6384c81ef009c98a747f, type: 3}
 --- !u!70 &607202896
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

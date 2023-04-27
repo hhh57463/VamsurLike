@@ -10,6 +10,7 @@ TagManager:
   - Weapon
   - Exp
   - Skill
+  - Arrow
   layers:
   - Default
   - TransparentFX

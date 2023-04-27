@@ -9,6 +9,9 @@ public class SkillManager : MonoBehaviour
     public SkillData[] skillDatas;
     public SkillData pillData;
     public byte[] skillLevels;                   // enum의 Skills로 인덱스 가져오기
+    public Monster nearMonster;
+    public float nearMonDis = 10.0f;
+
 
     public void SkillLevelUp(int skill)
     {
