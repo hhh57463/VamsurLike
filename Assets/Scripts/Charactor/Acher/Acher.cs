@@ -6,58 +6,81 @@ public class Acher : Player
 {
     [SerializeField] GameObject arrowPrefab;
     List<Arrow> arrowManager = new List<Arrow>();
+    
     public override void Init()
     {
         damage = 10;
         attackDelay = 2.0f;
         attackDuration = 0.3f;
         for (int i = 0; i < 10; i++)
-        {
-            arrowManager.Add(Instantiate(arrowPrefab).GetComponent<Arrow>());
-            arrowManager[i].gameObject.SetActive(false);
-        }
+            CreateArrow();
     }
 
     public override IEnumerator Attack()
     {
         yield return YieldInstructionCache.WaitForSeconds(attackDelay);
 
-        if(GameManager.I.skillManager.nearMonster != null)
+        if (GameManager.I.skillManager.nearMonster != null)
         {
-            Vector3 dir = playerTransform.position - GameManager.I.skillManager.nearMonster.monsterTransfrom.position;
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            ArrowPool(Quaternion.AngleAxis(angle - 180.0f, Vector3.forward));
+            switch (GameManager.I.skillManager.skillLevels[(int)Skills.BasicSkill_Acher])
+            {
+                case 1:
+                    ArrowDir(1);
+                    break;
+                case 2:
+                    ArrowDir(2);
+                    break;
+                case 3:
+                    ArrowDir(3);
+                    break;
+                case 4:
+                    ArrowDir(4);
+                    break;
+            }
         }
         StartCoroutine("Attack");
     }
 
-    Monster Target()
+    void CreateArrow()
     {
-        Monster target = null;
-        float distance = 10.0f;
-        for (int i = 0; i < GameManager.I.spawnManager.monsterManager.Count; i++)
-        {
-            for (int j = 0; j < GameManager.I.spawnManager.monsterManager[i].Count; j++)
-            {
-                if (!GameManager.I.spawnManager.monsterManager[i][j].gameObject.activeSelf)
-                    continue;
-                if (Vector2.Distance(playerTransform.position, GameManager.I.spawnManager.monsterManager[i][j].monsterTransfrom.position) < distance || target == null)
-                    target = GameManager.I.spawnManager.monsterManager[i][j];
-            }
-        }
-        return target;
+        Arrow temp = Instantiate(arrowPrefab).GetComponent<Arrow>();
+        arrowManager.Add(temp);
+        temp.gameObject.SetActive(false);
     }
 
-    void ArrowPool(Quaternion angle)
+    void ArrowDir(int cnt)
     {
+        Vector3 dir = playerTransform.position - GameManager.I.skillManager.nearMonster.monsterTransfrom.position;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        ArrowPool(Quaternion.AngleAxis(angle - 180.0f, Vector3.forward), cnt);
+    }
+
+    void ArrowPool(Quaternion angle, int cnt)
+    {
+        int num = 0;
         for (int i = 0; i < arrowManager.Count; i++)
         {
-            if(arrowManager[i].gameObject.activeSelf)
+            if (num == cnt)
+                return;
+            if (arrowManager[i].gameObject.activeSelf)
                 continue;
-            arrowManager[i].gameObject.SetActive(true);
-            arrowManager[i].transform.position = playerTransform.position;
-            arrowManager[i].transform.rotation = angle;
-            return;
+            ArrowDirSetting(arrowManager[i], angle);
+            num++;
         }
+        if (num < cnt)
+        {
+            for (int i = 0; i < cnt - num; i++)
+            {
+                CreateArrow();
+                ArrowDirSetting(arrowManager[arrowManager.Count - 1], angle);
+            }
+        }
+    }
+
+    void ArrowDirSetting(Arrow arrow, Quaternion angle)
+    {
+        arrow.gameObject.SetActive(true);
+        arrow.transform.position = playerTransform.position;
+        arrow.transform.rotation = angle;
     }
 }

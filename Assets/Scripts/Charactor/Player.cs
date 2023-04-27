@@ -49,7 +49,6 @@ public class Player : MonoBehaviour
         maxExp = 100;
         figureDmg = 0;
         figureExp = 0;
-        //dmgDecrease = 0;
         figureSpeed = 0.0f;
         isDie = false;
         Init();
