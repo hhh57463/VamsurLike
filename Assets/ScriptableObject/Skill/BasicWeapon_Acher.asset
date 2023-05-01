@@ -17,4 +17,5 @@ MonoBehaviour:
   skillSprite: {fileID: 21300000, guid: d0ea13dac15e3c64db3308cda57c94c9, type: 3}
   skillInfo:
   - "\uD654\uC0B4\uC744 \uD558\uB098 \uCD94\uAC00\uD558\uC5EC \uBC1C\uC0AC\uD569\uB2C8\uB2E4."
-  - "\uD654\uC0B4\uC744 \uC5B4\uCA4C\uAD6C"
+  - "\uD654\uC0B4\uC744 \uD558\uB098 \uCD94\uAC00\uD558\uC5EC \uBC1C\uC0AC\uD558\uBA70,
+    \uD654\uC0B4\uC774 \uAD00\uD1B5\uD569\uB2C8\uB2E4."

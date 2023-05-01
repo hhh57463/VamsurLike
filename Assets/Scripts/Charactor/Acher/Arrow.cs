@@ -16,7 +16,16 @@ public class Arrow : MonoBehaviour
 
     IEnumerator Pool()
     {
-        yield return YieldInstructionCache.WaitForSeconds(5.0f);
+        yield return YieldInstructionCache.WaitForSeconds(3.0f);
         gameObject.SetActive(false);
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Monster"))
+        {
+            if (GameManager.I.skillManager.skillLevels[(int)Skills.BasicSkill_Acher] != 4)
+                gameObject.SetActive(false);
+        }
     }
 }

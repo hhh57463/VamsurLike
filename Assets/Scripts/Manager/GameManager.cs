@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public SpawnManager spawnManager;
     public UIManager uiManager;
     public SkillManager skillManager;
+    public Transform spawnParent;                           // 맵에 생성되야 하는 오브젝트를 관리할 Transform
     public Player playerSc;
     public int playTime;
     public int killCount;
