@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     [Header("Player Figure")]
     public int figureDmg;
     public int figureExp;
-    //public int dmgDecrease;
+    public int evasionProbability;          // 피격확률
     public float figureSpeed;
 
     void Awake()
@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
         figureDmg = 0;
         figureExp = 0;
         figureSpeed = 0.0f;
+        evasionProbability = 0;
         isDie = false;
         Init();
         StartCoroutine("Attack");

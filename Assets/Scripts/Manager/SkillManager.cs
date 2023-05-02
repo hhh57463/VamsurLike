@@ -28,7 +28,7 @@ public class SkillManager : MonoBehaviour
                 GameManager.I.playerSc.figureExp += 1;
                 break;
             case (int)Skills.Clover:
-                Debug.Log("클로버는 피격 제작 후 만들 것");
+                GameManager.I.playerSc.evasionProbability++;
                 break;
             case (int)Skills.Drink:
                 GameManager.I.playerSc.figureSpeed += 0.25f;

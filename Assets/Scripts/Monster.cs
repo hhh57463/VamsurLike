@@ -78,13 +78,13 @@ public class Monster : MonoBehaviour
         GameManager.I.spawnManager.ExpSpawn(transform.position, dropExp);
         gameObject.SetActive(false);
     }
-    
+
     void CheckDistance()
     {
         float distance = Vector2.Distance(monsterTransfrom.position, GameManager.I.playerSc.playerTransform.position);
-        if(distance < GameManager.I.skillManager.nearMonDis)
+        if (distance < GameManager.I.skillManager.nearMonDis)
             GameManager.I.skillManager.nearMonster = this;
-        if(GameManager.I.skillManager.nearMonster == this)                          // 바꿀 방법 찾아보기
+        if (GameManager.I.skillManager.nearMonster == this)                          // 바꿀 방법 찾아보기
             GameManager.I.skillManager.nearMonDis = distance;
     }
 
@@ -103,6 +103,13 @@ public class Monster : MonoBehaviour
         {
             if (!GameManager.I.playerSc.isDie)
             {
+                if (GameManager.I.playerSc.evasionProbability != 0)
+                {
+                    if (Random.Range(0, 10) < GameManager.I.playerSc.evasionProbability)
+                    {
+                        return;
+                    }
+                }
                 GameManager.I.playerSc.hp -= dmg * Time.deltaTime;
             }
         }
