@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
         I = this;
     }
 
+    [SerializeField] GameObject[] charactorPrefab;
     public Cinemachine.CinemachineVirtualCamera vCam;
     public SpawnManager spawnManager;
     public UIManager uiManager;
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Instantiate(charactorPrefab[(int)Manager.I.job], Vector3.zero, Quaternion.identity);
         playTime = 0;
         killCount = 0;
         StartCoroutine("TimeController");

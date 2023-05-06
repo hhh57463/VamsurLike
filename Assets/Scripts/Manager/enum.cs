@@ -12,6 +12,12 @@ public enum DirectionY
     UP
 }
 
+public enum CharactorJob
+{
+    Warrior = 0,
+    Acher
+}
+
 public enum MonsterType
 {
     Enemy1,
