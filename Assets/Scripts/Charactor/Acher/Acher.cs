@@ -6,6 +6,8 @@ public class Acher : Player
 {
     [SerializeField] GameObject arrowPrefab;
     List<Arrow> arrowManager = new List<Arrow>();
+    [SerializeField] int arrowIdx;
+    [SerializeField] int arrowCount;
 
     public override void Init()
     {
@@ -14,6 +16,7 @@ public class Acher : Player
         attackDuration = 0.3f;
         for (int i = 0; i < 20; i++)
             CreateArrow();
+        arrowIdx = 0;
     }
 
     public override IEnumerator Attack()
@@ -32,6 +35,7 @@ public class Acher : Player
         Arrow temp = Instantiate(arrowPrefab, Vector3.zero, Quaternion.identity, GameManager.I.spawnParent).GetComponent<Arrow>();
         arrowManager.Add(temp);
         temp.gameObject.SetActive(false);
+        arrowCount = arrowManager.Count;
     }
 
     IEnumerator ArrowDir(int cnt)
@@ -39,22 +43,30 @@ public class Acher : Player
         Vector3 dir = playerTransform.position - GameManager.I.skillManager.nearMonster.monsterTransfrom.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         ArrowPool(Quaternion.AngleAxis(angle - 180.0f, Vector3.forward));
+        arrowIdx = arrowIdx < arrowCount - 1 ? arrowIdx + 1 : 0;
         yield return YieldInstructionCache.WaitForSeconds(0.15f);
         if (cnt > 1)
+        {
             StartCoroutine(ArrowDir(cnt - 1));
+        }
     }
 
     void ArrowPool(Quaternion angle)
     {
-        for (int i = 0; i < arrowManager.Count; i++)
+        for (int i = 0; i < arrowCount; i++)
         {
-            if (arrowManager[i].gameObject.activeSelf)
-                continue;
-            ArrowDirSetting(arrowManager[i], angle);
-            return;
+            if (i == arrowIdx)
+            {
+                if (arrowManager[i].gameObject.activeSelf)
+                {
+                    continue;
+                }
+                ArrowDirSetting(arrowManager[i], angle);
+                return;
+            }
         }
         CreateArrow();
-        ArrowDirSetting(arrowManager[arrowManager.Count - 1], angle);
+        ArrowDirSetting(arrowManager[arrowCount - 1], angle);
     }
 
     void ArrowDirSetting(Arrow arrow, Quaternion angle)

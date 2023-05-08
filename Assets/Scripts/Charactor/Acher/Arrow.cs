@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
+    [SerializeField] TrailRenderer arrowTrail;
     void OnEnable()
     {
         StartCoroutine("Pool");
@@ -17,6 +18,12 @@ public class Arrow : MonoBehaviour
     IEnumerator Pool()
     {
         yield return YieldInstructionCache.WaitForSeconds(3.0f);
+        ArrowClear();
+    }
+
+    void ArrowClear()
+    {
+        arrowTrail.Clear();
         gameObject.SetActive(false);
     }
 
@@ -25,7 +32,7 @@ public class Arrow : MonoBehaviour
         if (col.CompareTag("Monster"))
         {
             if (GameManager.I.skillManager.skillLevels[(int)Skills.BasicSkill_Acher] != 4)
-                gameObject.SetActive(false);
+                ArrowClear();
         }
     }
 }
