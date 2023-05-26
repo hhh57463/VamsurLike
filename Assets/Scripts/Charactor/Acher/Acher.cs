@@ -25,7 +25,7 @@ public class Acher : Player
 
         if (GameManager.I.skillManager.nearMonster != null)
         {
-            StartCoroutine(ArrowDir(GameManager.I.skillManager.skillLevels[(int)Skills.BasicSkill_Acher]));
+            StartCoroutine(ArrowDir(GameManager.I.skillManager.skillLevels[(int)Skills.BasicSkill]));
         }
         StartCoroutine("Attack");
     }

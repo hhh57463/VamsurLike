@@ -31,7 +31,7 @@ public class Arrow : MonoBehaviour
     {
         if (col.CompareTag("Monster"))
         {
-            if (GameManager.I.skillManager.skillLevels[(int)Skills.BasicSkill_Acher] != 4)
+            if (GameManager.I.skillManager.skillLevels[(int)Skills.BasicSkill] != 4)
                 ArrowClear();
         }
     }

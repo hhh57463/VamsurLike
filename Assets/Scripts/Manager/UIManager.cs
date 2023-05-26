@@ -82,9 +82,18 @@ public class UIManager : MonoBehaviour
                 {
                     skill = Random.Range(0, (int)(Skills.SkillLastIndex));
                 } while (exception.Contains(skill) || GameManager.I.skillManager.skillLevels[skill] >= 4);              // Contains 대체 구하기
-                skillBtn[i].skillImg.sprite = GameManager.I.skillManager.skillDatas[skill].skillSprite;
-                skillBtn[i].skillNameText.text = GameManager.I.skillManager.skillDatas[skill].skillName;
-                skillBtn[i].skillInfoText.text = GameManager.I.skillManager.skillLevels[skill] < 3 ? GameManager.I.skillManager.skillDatas[skill].skillInfo[0] : GameManager.I.skillManager.skillDatas[skill].skillInfo[1];
+                if (skill == (int)Skills.BasicSkill)
+                {
+                    skillBtn[i].skillImg.sprite = GameManager.I.skillManager.basicSkillDatas[(int)Manager.I.job].skillSprite;
+                    skillBtn[i].skillNameText.text = GameManager.I.skillManager.basicSkillDatas[(int)Manager.I.job].skillName;
+                    skillBtn[i].skillInfoText.text = GameManager.I.skillManager.skillLevels[skill] < 3 ? GameManager.I.skillManager.basicSkillDatas[(int)Manager.I.job].skillInfo[0] : GameManager.I.skillManager.basicSkillDatas[(int)Manager.I.job].skillInfo[1];
+                }
+                else
+                {
+                    skillBtn[i].skillImg.sprite = GameManager.I.skillManager.skillDatas[skill - 1].skillSprite;
+                    skillBtn[i].skillNameText.text = GameManager.I.skillManager.skillDatas[skill - 1].skillName;
+                    skillBtn[i].skillInfoText.text = GameManager.I.skillManager.skillLevels[skill - 1] < 3 ? GameManager.I.skillManager.skillDatas[skill - 1].skillInfo[0] : GameManager.I.skillManager.skillDatas[skill - 1].skillInfo[1];
+                }
                 exception.Add(skill);
                 if (i < 3 - fewSkill)
                 {

@@ -15,7 +15,8 @@ public enum DirectionY
 public enum CharactorJob
 {
     Warrior = 0,
-    Acher
+    Acher,
+    LastIndex
 }
 
 public enum MonsterType
@@ -28,8 +29,9 @@ public enum MonsterType
 
 public enum Skills
 {
-    BasicSkill_Warrior = 0,                 // 기본 공격
-    BasicSkill_Acher,
+    // BasicSkill_Warrior = 0,                 // 기본 공격
+    // BasicSkill_Acher,
+    BasicSkill = 0,
     Brick,
     Ring,
     Clover,

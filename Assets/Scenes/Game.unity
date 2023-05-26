@@ -603,9 +603,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brickPrefab: {fileID: 1386986872505621531, guid: d408d3e72c426b94b8241cb15d540f4f, type: 3}
-  skillDatas:
+  basicSkillDatas:
   - {fileID: 11400000, guid: 82c8ab9cfb0598e45a881533646030cf, type: 2}
   - {fileID: 11400000, guid: 7705c08ee43de9140b670eb366347603, type: 2}
+  skillDatas:
   - {fileID: 11400000, guid: c5bd342116535b2429af715a2ec86e09, type: 2}
   - {fileID: 11400000, guid: ae5c8618980f08c4593e1e4174af5edf, type: 2}
   - {fileID: 11400000, guid: 2a7b7675488f6854794147f149971e8a, type: 2}
@@ -613,7 +614,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e1588e073bb9a104386f7726b15f5ab1, type: 2}
   - {fileID: 11400000, guid: 983d1269fd2da53449e8ad3b7f3c7617, type: 2}
   pillData: {fileID: 11400000, guid: d8c36184f0b03334b94fb01036a9d817, type: 2}
-  skillLevels: 0101000000000000
+  skillLevels: 01000000000000
   nearMonster: {fileID: 0}
   nearMonDis: 10
 --- !u!1 &249797698

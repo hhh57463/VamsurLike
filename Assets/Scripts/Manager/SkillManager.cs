@@ -6,6 +6,7 @@ public class SkillManager : MonoBehaviour
     [Space(10)]
 
     [SerializeField] GameObject brickPrefab;
+    public SkillData[] basicSkillDatas;
     public SkillData[] skillDatas;
     public SkillData pillData;
     public byte[] skillLevels;                   // enum의 Skills로 인덱스 가져오기
@@ -17,8 +18,10 @@ public class SkillManager : MonoBehaviour
     {
         switch (skill)
         {
-            case (int)Skills.BasicSkill_Warrior:                    // 플레이어의 스킬들은 따로 직업 스크립트에서 관리 중
-            case (int)Skills.BasicSkill_Acher:
+            // case (int)Skills.BasicSkill_Warrior:                    // 플레이어의 스킬들은 따로 직업 스크립트에서 관리 중
+            // case (int)Skills.BasicSkill_Acher:
+            //     break;
+            case (int)Skills.BasicSkill:
                 break;
             case (int)Skills.Brick:
                 if (GameManager.I.skillManager.skillLevels[(int)Skills.Brick].Equals(1))
