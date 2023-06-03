@@ -49,7 +49,7 @@ public class Monster : MonoBehaviour
     void InitMonster()
     {
         type = monsterData.type;
-        hp = monsterData.hp;
+        hp = monsterData.hp + GameManager.I.additionalHP;
         moveSpeed = monsterData.speed;
         dropExp = monsterData.exp;
         dmg = monsterData.dmg;

@@ -27,7 +27,8 @@ public class Acher : Player
         {
             StartCoroutine(ArrowDir(GameManager.I.skillManager.skillLevels[(int)Skills.BasicSkill]));
         }
-        StartCoroutine("Attack");
+        if (!isDie)
+            StartCoroutine("Attack");
     }
 
     void CreateArrow()

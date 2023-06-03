@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public Player playerSc;
     public int playTime;
     public int killCount;
+    public int additionalHP;                                // 몬스터의 추가 체력
 
     void Start()
     {
@@ -51,7 +52,10 @@ public class GameManager : MonoBehaviour
             playTime++;
             uiManager.TimeSetting();
             if ((playTime % 5).Equals(0))
+            {
                 SpawnTime(playTime);
+                additionalHP += 1;
+            }
             StartCoroutine("TimeController");
         }
     }
